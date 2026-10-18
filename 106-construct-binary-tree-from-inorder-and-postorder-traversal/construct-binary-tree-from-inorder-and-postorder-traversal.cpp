@@ -13,8 +13,7 @@ class Solution {
 public:
 TreeNode* build(vector<int>& inorder, vector<int>& postorder,int &postIndex,int inStart,int inEnd,unordered_map<int,int>&mp){
     if(inStart>inEnd) return NULL;
-    TreeNode* root=new TreeNode(postorder[postIndex]);
-    postorder[postIndex--];
+    TreeNode* root=new TreeNode(postorder[postIndex--]);
     int inIndex=mp[root->val];
     root->right=build(inorder,postorder,postIndex,inIndex+1,inEnd,mp);
     root->left=build(inorder,postorder,postIndex,inStart,inIndex-1,mp);
